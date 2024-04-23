@@ -1,0 +1,31 @@
+This is pdfeTeX, Version 3.141592-1.30.6-2.2 (MiKTeX 2.5) (preloaded format=latex 2007.2.19)  7 NOV 2008 17:20
+entering extended mode
+**dsf_resub_vedi_se_compila.tex
+(dsf_resub_vedi_se_compila.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8g> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman, ngerman, french, dutch, loaded.
+
+! LaTeX Error: File `svmult.cls' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: cls)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.2 
+     
+*** (cannot \read from terminal in nonstop modes)
+
+ 
+Here is how much of TeX's memory you used:
+ 12 strings out of 95374
+ 251 string characters out of 1186627
+ 45012 words of memory out of 1048577
+ 3261 multiletter control sequences out of 60000
+ 3640 words of font info for 14 fonts, out of 1000000 for 2000
+ 54 hyphenation exceptions out of 8191
+ 10i,0n,7p,64b,8s stack positions out of 5000i,500n,10000p,200000b,32768s
+No pages of output.

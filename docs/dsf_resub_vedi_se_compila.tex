@@ -1,0 +1,1522 @@
+\documentclass[vecphys]{svmult}
+
+
+% choose options for [] as required from the list
+% in the Reference Guide, Sect. 2.2
+
+\usepackage{makeidx}         % allows index generation
+\usepackage{graphicx}        % standard LaTeX graphics tool
+                             % when including figure files
+\usepackage{multicol}        % used for the two-column index
+\usepackage[bottom]{footmisc}% places footnotes at page bottom
+% etc.
+% see the list of further useful packages
+% in the Reference Guide, Sects. 2.3, 3.1-3.3
+
+\makeindex             % used for the subject index
+                       % please use the style sprmidx.sty with
+                       % your makeindex program
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \documentclass[10pt]{article}
+% \setlength{\textwidth}{27pc}
+% \setlength{\textheight}{43pc}
+% \usepackage{latexsym}
+ \usepackage{amssymb}
+ \usepackage{amsfonts}
+ \usepackage{amsmath}
+%\usepackage{theorem}
+
+%\theorembodyfont{\upshape}
+
+
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{corollary}{Corollary}
+%\newtheorem{definition}{Definition}
+%\newtheorem{remark}{Remark}
+%\newtheorem{proposition}{Proposition} 
+
+%\renewcommand{\baselinestretch}{1.4}
+
+\begin{document}
+
+
+\title*{Self-Averaging Identities \\
+for Random Spin Systems}
+\author{Luca De Sanctis\inst{1}
+and Silvio Franz\inst{2}}
+\institute{
+ICTP, Strada Costiera 11, 34014 Trieste, Italy,
+\texttt{lde\_sanc@ictp.it} ,
+\and 
+LPTMS, b\^atiment 100,
+Universit\'e Paris-Sud 11,
+Centre scientifique d'Orsay,
+15 rue Georges Cl\'emenceau,
+91405 Orsay cedex
+\texttt{silvio.franz@lptms.u-psud.fr}}
+
+
+\maketitle
+
+\begin{abstract}
+We provide a systematic treatment of self-averaging identities,
+whose validity is proven in integral average, for dilute spin glasses.
+The method is quite
+general, and as a special case recovers the Ghirlanda-Guerra 
+identities,
+which are therefore proven, together with their extension, 
+to be valid in dilute spin
+glasses. We focus on dilute spin glasses, but the results hold
+in all models enjoying stability with respect the perturbations we
+introduce; although such a stability is believed to hold for several
+models, we do not classify them here.
+\end{abstract}
+
+\noindent{\em Key words and phrases:} diluted 
+spin glasses, Ghirlanda-Guerra, self-averaging.
+
+\noindent{\em Mathematics Subject Classification:} 82B44; 82B20
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+
+Despite many years of intense work, and the much awaited proof of the
+validity of the Parisi ansatz for the free-energy of the 
+Sherrington-Kirkpatrick (SK) and
+related models, the mathematical comprehension of the thermodynamics of
+mean field spin glasses remains largely incomplete. We know from
+theoretical physics that in fully connected models all the properites
+of the low temperature spin glass phase can be encoded in the
+probability distribution of the overlap between two different copies of
+the system. The analysis of Parisi et al. predicts an ultrametric
+organization of the phases (see \cite{mpv} and references therein).
+So far the rigorous proof (or disproof) of ultrametricity, and, more in
+general, the analysis of the structure of Gibbs measures at low
+temperature, turned out to be a very difficult task. A step in this
+direction was performed by Ghirlanda and Guerra in \cite{gg}. They found
+a simple and elegant way, based on the self-averaging of the
+internal energy, to prove a remarkable property of the overlaps. Given
+$s$ replicas, the Gibbs measure must be such that
+when one adds a further replica this is either
+identical to one these, or statistically independent of them; each
+case occurring with the same probability. More
+generally, various constraints on the distribution of the different
+overlaps have been found in the same spirit \cite{ac, parisi}. Such
+features have found several applications \cite{talabook, bovierbook}
+in the rigorous analysis of spin glass models. For example, the
+property of non-negativity of the overlap, which in some models plays
+a role in turning the cavity free-energy into a rigorous lower bound,
+turns out to be a consequence of the Ghirlanda-Guerra self-averaging
+identities \cite{talabook}. In the same way these identities have
+a role in the rigorous analysis of spin glasses close to the critical
+temperature \cite{abds}.
+
+In more general spin-glass systems, like finite dimensional systems or
+spin systems on random graphs, the statistics of the overlap is not
+enough to fully characterize the low temperature spin glass phase. For
+instance, in diluted models the statistics of the local cavity
+fields, or equivalently of all the multi-overlaps, is necessary to
+describe the low temperature thermodynamic properties. In this
+paper, we analyse two families of identities for the local fields and
+multi-overlap distributions that are a consequence of self-averaging
+relations. We will see that first of the two families is
+a consequence of the self-averaging with respect to the 
+Gibbs measure or, equivalently, 
+of stochastic stability, as the two phenomena turn out to be 
+equivalent. The other family of identities is instead a consequence 
+of self-averaging with respect to the global measure
+(quenched after Gibbs). The second family contains the first.
+The form of the identities we obtain
+is due only to the form of the perturbations we introduce,
+and does not depend on the specific form of the Hamiltonian.
+However, the self-averaging at the basis of the results does
+not necessarily holds for all Hamiltonians. So we will 
+stick with the case of dilute spin glass (Viana-Bray model),
+for which the self-averaging is assured, but our method shows that
+the same identities we 
+find hold whenever the self-averaging is true. We do not
+provide a classification of all the models exhibiting 
+self-averaging when perturbed.  
+A second reason to use the example of spin
+models on sparse random graphs (dilute spin glass models), is that we
+expect that our results could provide hints for progresses in the mathematical
+analysis of the low temperature phases. Diluted mean field spin
+glasses have, in recent time, attracted a lot of attention in
+statistical physics, due to the intrinsic interest of spin glasses
+where each spin interacts with a finite number of variables, but more
+importantly because fondamental problems in computer science, such as
+the random K-SAT and graph coloring, the random X-OR-SAT, tree
+reconstruction \cite{mm1} and others, admit a formulation in
+terms of spin glass systems on random graphs. 
+The cavity approach to these problems has led in
+many cases to results believed to be exact, albeit for the moment
+several rigorous proofs are still lacking. 
+
+One of the two families of the identities that we will find appeared already in
+\cite{flt} to discuss free energy bounds in diluted models with
+non-Poissonian connectivity. In \cite{flt} such a family of identities
+was shown to be a consequence of self-averaging of certain
+random polynomial function of some spins variables,
+and the self-averaging was deduced from the convexity of the 
+perturbed free energy. 
+Here we re-derive this family of identities with a different
+strategy, employing stochastic stability
+of the free energy
+with respect to suitable perturbations of the Hamiltonian,
+and we show that the stability implies self-averaging. 
+The use of stochastic stability makes our results valid
+even when a measure different from the Gibbs one is considered,
+provided certain conditions hold (we will briefly hint at this
+when introducing Random Multi-Overlap Structures).
+Moreover, our method shows that the constraints we find
+are valid whenever stochastic stability or self-averaging hold,
+whichever turns out to be easier to study, and in the physics literature 
+many models have been investigated from at least one of the two
+points of view.
+We also exhibit a second family of new identities, which contains
+the first family and follows from the self-averaging with respect
+to the quenched expectation.
+
+For both families, we will start with the two-spin model, perturbed with
+a two-spin random field. This provides identities involving squared
+overlaps. The same identical method, reproduced for generic $p$-spin
+interactions, yields the same identities involving the $p$-th power of the
+overlaps. Therefore considering Hamiltonians and perturbations with all $p$-spin
+interactions we will conclude that the identities hold for all regular functions
+of the overlaps.
+
+Let us stress here that the basic tool we employ is the introduction of suitable 
+perturbations, such that the pressure (minus the free energy divided by the temperature) 
+is convex in all the perturbing parameters.
+This guarantees the existence of the derivatives with respect to the perturbing parameters
+only almost everywhere. Therefore the relations we find are valid only when one 
+integrates (with Lebesgue measure) back against the perturbing parameters
+over any given intervals. We summarize this by recalling that our relations hold
+in ``integral average''.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{The notations}
+
+We will deal with the stereotypical dilute spin glass model,
+the Viana-Bray (VB), for which we are about to describe the notations we need
+to derive our results in the next two sections.
+Let
+$\alpha, \beta$ be 
+non-negative real numbers
+(degree of connectivity and inverse temperature
+respectively);
+$P_\zeta$ be a Poisson random variable of mean $\zeta$;
+$\{i_\nu\}, \{j_\nu\}$, etc. be independent identically 
+distributed random variables, 
+uniformly distributed over the points $\{1,\ldots, N\}$;
+$\{J_\nu\}, J$, etc. be
+independent identically distributed 
+random variables, with symmetric distribution;
+$\mathcal{J}$ be the set of all the quenched 
+random variables  above. The map
+$\sigma: i \rightarrow \sigma_{i},\ i\in\{1,\ldots , N\}$ 
+is a spin configuration from the 
+configuration space $\Sigma=\{-1,1\}^{N}$;
+$\pi_{\zeta}(\cdot)$ is the Poisson measure
+of mean $\zeta$.
+The Hamiltonian of the Viana-Bray model is defined as
+\begin{equation}
+\label{ham}
+H_N(\sigma, \alpha; \mathcal{J})=
+-\sum_{\nu=1}^{P_{\alpha N}} J_\nu \sigma_{i_\nu}\sigma_{j_\nu}\ .
+\end{equation}
+We will limit to the case $J=\pm 1$, without loss of 
+generality \cite{gt1}.
+We follow the usual basic definitions and notations 
+of thermodynamics for the partition function $Z_{N}$,
+the pressure $p_{N}$,
+the free energy per site $f_{N}$ and its thermodynamic limit $f$,
+so to have in general
+\begin{equation}
+Z_{N}(\beta,\alpha)\equiv Z(H_{N}; \beta,\alpha; \mathcal{J})=\sum_{\{\sigma\}}
+\exp(-\beta H_N(\sigma,\alpha; \mathcal{J}))\ ,
+\end{equation}
+\begin{equation}
+p_{N}(\beta,\alpha)=-\beta f_N(\beta,\alpha)=\frac1N \mathbb{E}
+\ln Z_N(\beta,\alpha)\ ,\ f(\beta,\alpha)=\lim_{N\to\infty} f_N(\beta,\alpha)\ .
+\end{equation}
+The Boltzmann-Gibbs average of an observable 
+$\mathcal{O}:\Sigma\to\mathbb{R}$ is
+\begin{equation}
+\Omega(\mathcal{O})=
+Z_N(\beta,\alpha; \mathcal{J})^{-1}
+\sum_{\{\sigma\}}\mathcal{O}(\sigma)\exp(-\beta
+H_N(\sigma,\alpha; \mathcal{J}))\ ,
+\end{equation}
+and $\langle\mathcal{O}\rangle=\mathbb{E}\Omega(\mathcal{O})$ is the
+global average, where
+$\mathbb{E}$ denotes the average with respect to the quenched variables.
+When dealing with more than one configuration, we need the 
+product measure of the needed copies of $\Omega$, which will be denoted
+again by $\Omega$.
+
+The multi-overlaps $q_{1\cdots m}:\Sigma^{m}\to[-1,1]$,
+where we use the notation 
+$\Sigma^{n}=\Sigma^{(1)}\times\cdots\times\Sigma^{(n)}$, 
+among the ``replicas'' 
+$\Sigma^{(r_{1})}\ni\sigma^{(r_{1}(},\ldots,\Sigma^{(r_{n})}\ni\sigma^{(r_{n})}$ 
+is defined by
+\begin{equation}
+\label{overlap}
+q_{r_1\cdots r_n}=\frac{1}{N}\sum_{i=1}^N\sigma_i^{(r_1)}
+\cdots\sigma_i^{(r_n)}\ ,
+\end{equation}
+but sometimes we will just write $q_n$; $q_{1}$ can be identified with
+the magnetization $m$
+$$
+m=\frac{1}{N}\sum_{i=1}^N\sigma_i\ .
+$$
+%Notice that $\sigma^{s}_{i}$ is the $i$-th spin 
+%from the replica $s$, $\Sigma^{(s)}$, not the $s$-th power of 
+%$\sigma_{i}$, i.e.
+%$s$ is an index and not an exponent.
+
+Notice that
+\begin{equation}
+\label{q}
+\mathbb{E}[\Omega
+(\sigma_{i_{1}})]^{2n}=\langle q_{1\cdots 2n}\rangle\ ,\ 
+\mathbb{E}\Omega
+(\sigma_{i_{1}})=\mathbb{E}\Omega
+(m)=\langle m \rangle\ ,
+\end{equation}
+and that
+\begin{equation}
+%\label{qbis}
+\mathbb{E}[\Omega
+(\sigma_{i_{1}}\cdots\sigma_{i_{p}})]^{2n}=\langle q^{p}_{1\cdots 2n}\rangle\ ,\ 
+\mathbb{E}\Omega
+(\sigma_{i_{1}}\cdots\sigma_{i_{p}})=\mathbb{E}\Omega
+(m^{p})=\langle m^{p} \rangle\ ,
+\end{equation}
+for all integer $n$ and $p$. 
+%Notice that in the case of the overlaps,
+%$p$ are not apices labeling replicas but they are just exponents,
+%contrarily to the notation for the spins.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Stochastic Stability and self-averaging of the Gibbs measure}
+\label{qs}
+
+In the study of finite connectivity models it emerged that
+in a suitable propability space it is possible to
+formulate an exact variational principle for the computation
+of the free energy. This was obtained with the introduction
+of Random Multi-Overlap Structures (RaMOSt). We refer
+to \cite{lds1} for details.
+The ROSt approach is based on the use of generic random weights
+to average the ``cavity'' part and the relative ``internal
+correction'' in the free energy (these are the numerator and
+the denominator of the trial free energy $G_N$ introduced in
+(\ref{gtfdilute}). See \cite{lds1} for details).
+Here we are not interested in a detailed discussion of
+the RaMOSt approach, but we study the effect of a 
+perturbation to the measure of our model, which does not
+need to be the Gibbs measure. That is why introduce this
+more general weighting scheme, although the reader may
+keep in mind the Gibbs measure as a guiding example.
+
+\subsection{Random Multi-Overlap Structures}
+
+The proper framework for the calculation of the free energy per spin
+is that of the Random Multi-Overlap Structures (RaMOSt, see
+\cite{lds1} for more details).
+\begin{definition}
+  Given a probability space $\{\Omega,\mu(d\omega)\}$,
+  a {\bf Random Multi-Overlap Structure}
+  $\mathcal{R}$ is a triple
+  $(\tilde{\Sigma}, \{\tilde{q}_{2n}\}, \xi)$ where
+  \begin{itemize}
+  \item $\tilde{\Sigma}$ is a discrete space;
+  \item $\xi: \tilde{\Sigma}\rightarrow\mathbb{R}_+$
+    is a system of random weights, such that $\sum_{\gamma\in\tilde{\Sigma}}
+    \xi_\gamma\leq\infty$ $\mu$-almost surely;
+  \item $\tilde{q}_{2n}:\tilde{\Sigma}^{2n}\rightarrow\mathbb{R},
+    n\in\mathbb{N}$ is a positive semi-definite \emph{Multi-Overlap
+      Kernel} (equal to 1 on the diagonal of $\tilde{\Sigma}^{2n}$, so
+    that by Schwartz inequality $|\tilde{q}|\leq 1$).
+  \end{itemize}
+\end{definition}
+A RaMOSt needs to be equipped with $N$ independent copies
+of a random field
+$\{\tilde{h}^{i}_{\gamma}(\alpha; \tilde{\mathcal{J}})\}_{i=1}^{N}$ and
+with another random field
+$\hat{H}_{\gamma}(\alpha N; \mathcal{J}^{\prime})$
+such that
+\begin{eqnarray}
+&&\!\!\!\!\frac{d}{d\alpha}\mathbb{E}\ln \sum_{\gamma\in\tilde{\Sigma}}\xi_{\gamma}
+\exp(-\beta\tilde{h}^{i}_{\gamma}(\alpha; \tilde{\mathcal{J}}))
+ =  2\sum_{n>0}\frac{1}{2n}\tanh^{2n}(\beta)
+(1-\langle \tilde{q}_{2n}\rangle) , \label{eta} \\
+&&\!\!\!\!\frac{d}{d\alpha}\mathbb{E}\ln \sum_{\gamma\in\tilde{\Sigma}}\xi_{\gamma}
+\exp(-\beta \hat{H}_{\gamma}(\alpha N; \mathcal{J}^{\prime}))
+= \sum_{n>0}\frac{1}{2n}\tanh^{2n}(\beta)
+(1-\langle\tilde{q}^{2}_{2n}\rangle) .\label{kappa}
+\end{eqnarray}
+The quenched variables in $\tilde{h}$ and $\hat{H}$
+are independent one another and independent of
+those in the weights $\xi$.
+These two fields just introduced are employed in the definition of the
+trial pressure
+\begin{equation}\label{gtfdilute}
+G_{N}(\mathcal{R};\beta,\alpha)=\frac 1N\mathbb{E}\ln
+\frac{\sum_{\gamma, \sigma}\xi_{\gamma}
+\exp(-\beta\sum_{i=1}^{N}\tilde{h}^{i}_{\gamma}(\alpha; \tilde{\mathcal{J}})
+\sigma_{i})}{\sum_{\gamma}\xi_{\gamma}
+\exp(-\beta \hat{H}_{\gamma}(\alpha N; \mathcal{J}^{\prime}))}\ .
+\end{equation}
+Notice that the expectation $\langle\cdot\rangle$ here is not necessarily
+the quenched Gibbs one: it is the generic one of the RaMOSt.
+
+The reason why this is the proper framework for the 
+calculation of the free energy is explained 
+by the next \cite{lds1}
+\begin{theorem}[Extended Variational Principle]
+Taking the infimum for each $N$
+separately of the trial function $G_N(\mathcal{R};\beta,\alpha)$ over the space
+of all RaMOSt's, the resulting sequence tends to the limiting pressure
+$-\beta f(\beta,\alpha)$ of the VB model as $N$ tends to infinity:
+\begin{equation}
+\label{evp-d}
+-\beta f(\beta,\alpha)=\lim_{N\rightarrow\infty}
+\inf_{\mathcal{R}}G_{N}(\mathcal{R};\beta,\alpha)\ .
+\end{equation}
+\end{theorem}
+A RaMOSt $\mathcal{R}$ is said to be optimal if
+$G(\mathcal{R};\beta,\alpha)=-\beta f(\beta,\alpha)\ \ \forall\ \beta,\alpha$.
+Recall that we denote by $\Omega$ the measure
+associated to the RaMOSt weights $\xi$.
+
+The Boltzmann RaMOSt \cite{lds1} is optimal, and
+constructed by thinking of a reservoir of $M$ spins $\tau$
+$$
+\Sigma=\{-1,1\}^M\ni\tau\ ,\ \xi_\tau=\exp(-\beta H_M(\tau,\alpha,\mathcal{J}))\ ,\
+$$
+$$
+\tilde{q}_{1\cdots 2n}=\frac1M\sum_{k=1}^M\tau^{(1)}_k\cdots\tau^{(2n)}_k
+$$
+with
+$$
+\tilde{h}^{i}_{\tau}(\alpha,\tilde{\mathcal{J}})=\sum_{\nu=1}^{\tilde{P}_{2\alpha}}
+\tilde{J}_{\nu}^{i}\tau_{k_{\nu}^{i}}\ , \
+\hat{H}_{\tau}(\alpha N, \mathcal{J}^{\prime})=
+-\sum_{\nu=1}^{\hat{P}_{\alpha N}}
+\hat{J}_\nu \tau_{k_\nu}\tau_{l_\nu}\ ,
+$$
+with $\tilde{J},\hat{J}$ all independent copies of $J$, and 
+with the random site variables $k_{\nu},l_{\nu}$ all mutually independent and
+uniformly distributed over $\{1,\ldots M\}$.
+
+Let $c_{i}=2\cosh(\beta\tilde{h}^{i}_{\tau}(\alpha,\tilde{\mathcal{J}}))$.
+It is possible to show \cite{lds1} that
+optimal RaMOSt's enjoy the same
+factorization property enjoyed by the Boltzmann
+RaMOSt and described in the next \cite{lds1}
+\begin{theorem}[Factorization of optimal RaMOSt's]
+\label{lisboa-d}
+The following Ces{\`a}ro  limit
+is linear in $N$ and $\bar{\alpha}$
+\begin{equation}\label{limrost}
+\mathbf{C}\lim_{M}\mathbb{E}\ln\Omega_M
+\{c_{1}\cdots c_{N}\exp[-\beta \hat{H}_\tau(\bar{\alpha},\mathcal{J}^{\prime})]\}
+=N(-\beta f +\alpha A)+\bar{\alpha}A\ ,
+\end{equation}
+where
+\begin{equation}\label{defa}
+A=\sum_{n=1}^{\infty}\frac{1}{2n}
+\mathbb{E}\tanh^{2n}(\beta J)(1-\langle q_{2n}^{2}\rangle)\ ,
+\end{equation}
+and the equality holds in integral average, i.e. once both
+sides are integrated against $\alpha$ over any given interval.
+\end{theorem}
+This factorization property is called {\sl invariance with 
+respect to the cavity step},
+or {\sl Quasi-Stationarity},
+and it is found in the hierarchical Parisi ansatz as well.
+When $\bar{\alpha}$ is zero, the theorem above states
+the factorization of the cavity fields, and it is possible to show that
+from this property one can deduce the family of identities we will
+discuss in the next subsection \cite{bds2}. When one removes instead
+the cavity terms $c_{1},\ldots , c_{N}$ from the previous theorem,
+the statement becomes what is usually referred to as Stochastic
+Stability. We will show that the latter too implies the same family
+of identities. We will have in mind the case of a small perturbation
+of our spin system, but what we find holds for more
+general RaMOSt's, provided the previous theorem holds, that is
+for Quasi-Stationary RaMOSt's.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The first family of identities}
+
+We will now prove a lemma that expresses the stability
+of the Gibbs measure of our model against a macroscopic but
+small stochastic perturbation. In different terms, the lemma expresses
+the linear response of the free energy to the connectivity shift
+the perturbation consists of.
+The lemma we are about to prove will be used to show that
+from stochastic stability one can deduce a certain self-averaging
+which in turn imposes a family of constraints on the distribution of the
+overlaps.
+\begin{lemma}\label{lemma}
+  Let $\Omega\ ,\ \langle\cdot\rangle$ be the usual infinite volume
+  Gibbs and quenched
+  Gibbs expectations at inverse temperature $\beta$, associated with
+  the Hamiltonian $H_{N}(\sigma, \alpha; \mathcal{J})$, $N\to\infty$. 
+  Then the following equality 
+  (understood to be in the thermodynamic limit) holds 
+\begin{equation}\label{stability}
+\mathbb{E}\ln\Omega\exp\bigg(\beta^{\prime}
+\sum_{\nu=1}^{P_{\alpha^{\prime}}}
+J^{\prime}_{\nu}\sigma_{i^{\prime}_{\nu}}\sigma_{j^{\prime}_{\nu}}\bigg)
+=\alpha^{\prime}\sum_{n=1}^{\infty}\frac{1}{2n}
+\tanh^{2n}(\beta^{\prime})(1-\langle q^{2}_{2n}\rangle)\ .
+\end{equation}
+in integral average with respect to the degree of connectivity.
+The random 
+variables $P_{\alpha^{\prime}}, \{J^{\prime}_{\nu}\}$,
+$\{i^{\prime}_{\nu}\},\{j^{\prime}_{\nu}\}$ are independent
+copies of the analogous random variables 
+in the Hamiltonian contained in $\Omega$.
+\end{lemma}
+Notice that, in distribution 
+\begin{equation}
+\label{continuo1}
+\beta\sum_{\nu=1}^{P_{\alpha N}}
+J_{\nu}\sigma_{i_{\nu}}\sigma_{j_{\nu}}+\beta^{\prime}
+\sum_{\nu=1}^{P_{\alpha^{\prime}}}
+J^{\prime}_{\nu}\sigma_{i^{\prime}_{\nu}}\sigma_{j^{\prime}_{\nu}}
+\sim\beta\sum_{\nu=1}^{P_{\alpha N+\alpha^{\prime}}}
+J^{\prime\prime}_{\nu}\sigma_{i_{\nu}}\sigma_{j_{\nu}}
+\end{equation}
+where $\{J^{\prime\prime}_{\nu}\}$ are independent copies 
+of $J$ with probability $\alpha N/(\alpha N+\alpha^{\prime})$ and 
+independent copies of $J\beta^{\prime}/\beta$ with probability
+$\alpha^{\prime}/(\alpha N+\alpha^{\prime})$. In the right hand
+side above, the quenched random variables will be collectively denoted
+by $\mathcal{J}^{\prime\prime}$.
+Notice also that 
+the sum of Poisson random variables 
+is a Poisson random variable with
+mean equal to the sum of the means, and hence we can write
+\begin{equation}
+  \label{continuo2}
+  A_{t}\equiv\mathbb{E}\ln\Omega\exp\bigg(\beta^{\prime}
+  \sum_{\nu=1}^{P_{\alpha^{\prime}t}}
+  J^{\prime}_{\nu}\sigma_{i^{\prime}_{\nu}}\sigma_{j^{\prime}_{\nu}}\bigg)
+  =\mathbb{E}\ln\frac{Z_{N}(\alpha_{t};
+    \mathcal{J}^{\prime\prime})}{Z_{N}(\alpha;\mathcal{J})}\ ,
+\end{equation}
+where we defined, for $t\in[0, 1]$,
+\begin{equation}
+  \label{continuo3}
+  \alpha_{t}=\alpha+\alpha^{\prime}\frac{t}{N}
+\end{equation}
+so that $\alpha_{t}\rightarrow\alpha\ \forall \ t$ as $N\to\infty$.\\
+\textbf{Proof}.
+Let us compute the $t$-derivative of $A_{t}$, as defined in 
+(\ref{continuo2})
+\begin{equation}
+  \frac{d}{dt}A_{t}=
+  \mathbb{E}\sum_{m=1}^{\infty}\frac{d}{dt}\pi_{\alpha^{\prime} t}(m)
+  \ln\sum_{\sigma}\exp\bigg(\beta^{\prime}\sum_{\nu=1}^{m}
+  J^{\prime}_{\nu}\sigma_{i^{\prime}_{\nu}}
+  \sigma_{j^{\prime}_{\nu}}\bigg)\ .
+\end{equation}
+Using the following
+elementary property of the Poisson measure
+\begin{equation}\label{poisson}
+  \frac{d}{dt}\pi_{t\zeta}(m)=\zeta(\pi_{t\zeta}(m-1)-\pi_{t\zeta}(m))
+\end{equation}
+we get
+\begin{eqnarray*}
+  \frac{d}{dt}A_{t}&=&
+  \alpha^{\prime}\mathbb{E}\sum_{m=0}^{\infty}
+  [\pi_{\alpha^{\prime} t}(m-1)
+  -\pi_{\alpha^{\prime} t}(m)]
+  \ln\sum_{\sigma}\exp(\beta^{\prime}\sum_{\nu=1}^{m}J^{\prime}_{\nu}
+  \sigma_{i^{\prime}_{\nu}}\sigma_{j^{\prime}_{\nu}})\\
+  {}&=&\alpha^{\prime}\mathbb{E}\ln\sum_{\sigma}
+  \exp(\beta^{\prime} J^{\prime}\sigma_{i^{\prime}_{m}}
+  \sigma_{j^{\prime}_{m}})
+  \exp(\beta^{\prime}\sum_{\nu=1}^{P_{\alpha^{\prime} t}}J^{\prime}_{\nu}
+  \sigma_{i^{\prime}_{\nu}}\sigma_{j^{\prime}_{\nu}})\\
+  {}&{}&\hspace{3cm}-\alpha^{\prime}\mathbb{E}\ln\sum_{\sigma}
+  \exp(\beta^{\prime}\sum_{\nu=1}^{P_{\alpha^{\prime} t}}J^{\prime}_{\nu}
+  \sigma_{i^{\prime}_{\nu}}\sigma_{j^{\prime}_{\nu}})\\
+  {}&=&\alpha^{\prime}\mathbb{E}\ln\Omega_{t}
+  \exp(\beta^{\prime} J^{\prime}\sigma_{i^{\prime}_{m}}
+  \sigma_{j^{\prime}_{m}})\ ,
+\end{eqnarray*}
+where the average $\Omega_{t}$ is associated with the 
+Hamiltonian plus the $t$-dependent weights in the exponential
+in (\ref{continuo2}).
+Now use the following identity
+$$
+\exp(\beta^{\prime} J^{\prime}\sigma_{i}\sigma_{j})
+=\cosh(\beta^{\prime} J^{\prime})+\sigma_{i}\sigma_{j}
+\sinh(\beta^{\prime} J^{\prime})
+$$
+to get
+\begin{equation}
+  \frac{d}{dt}A_{t}
+  =\alpha^{\prime}\mathbb{E}\ln\Omega_{t}
+  [\cosh(\beta^{\prime} J^{\prime})(1+\tanh(\beta^{\prime} 
+  J^{\prime})\sigma_{i^{\prime}_{m}}
+  \sigma_{j^{\prime}_{m}})]\ .
+\end{equation}
+We now expand the logarithm in power series and see that,
+when $N\to\infty$, as $\alpha_{t}\to\alpha$
+the result does not depend on $t$,
+wherever the expectation $\Omega_{t}$
+is continuous
+as a function of the parameter $t$. 
+From the comments that preceded
+the current proof, formalized 
+in (\ref{continuo1})-(\ref{continuo2})-(\ref{continuo3}), 
+this is the same as assuming that
+$\Omega$ is regular as a function of $\alpha$,
+because
+$J^{\prime\prime}\to J$ in the sense that in the large
+$N$ limit $J^{\prime\prime}$ can only take
+the usual values $\pm 1$ since the probability of being
+$\pm \beta^{\prime}/\beta$ becomes zero. 
+Therefore integrating
+against $t$ from 0 to 1 is the same as multiplying by 1.
+Due to the symmetric distribution of $J$,
+the expansion of the logarithm yields the right hand side of
+(\ref{stability}),
+where the odd powers are missing. $\Box$
+
+Notice that the left hand side of (\ref{stability}) 
+can be written, according to our notations,
+ $\mathbb{E}\ln\Omega\exp
+ (-\beta^{\prime}\hat{H}_\sigma(\alpha^{\prime},\mathcal{J}^{\prime}))$. %,
+%dropping the index $\sigma$  in the  definition of $\hat{H}$.
+We want now to consider the statement of Lemma \ref{lemma}
+in the case of two independent perturbations, assuming
+we are always in the thermodynamic limit.
+The consequent generalization obtained by using twice the
+fundamental theorem of calculus simply gives (in integral average)
+\begin{equation}\label{twopert}
+\mathbb{E}\ln\Omega[\exp(-\beta^{\prime}_1\hat{H}_\sigma
+(\alpha^{\prime}_{1};\mathcal{J}_{1}^{\prime})
+-\beta^{\prime}_2\hat{H}_\sigma(\alpha^{\prime}_{2};
+\mathcal{J}_{2}^{\prime}))]=(\alpha^{\prime}_{1}
++\alpha^{\prime}_{2})A\ ,
+\end{equation}
+where $A$ again does not depend,
+in the thermodynamic limit, on 
+$\alpha_1^{\prime},\alpha_2^{\prime}$, and has 
+the same form as the right hand side of
+(\ref{stability}) although the explicit for of $A$ is
+not important here. In the equation above,
+assumed to be taken in the thermodynamic limit, $\Omega$ 
+is the Gibbs measure associated with the unperturbed
+Hamiltonian of the original model, and the same holds
+for the averages appearing in $A$, just like in the previous lemma.
+Clearly at this point we have 
+$$
+\frac{\partial^{2}}{\partial\alpha^{\prime}_{1}
+  \partial\alpha^{\prime}_{2}}
+\mathbb{E}\ln\Omega[\exp(-\beta^{\prime}_{1}
+\hat{H}_\sigma(\alpha^{\prime}_{1};\mathcal{J}_{1}^{\prime})
+-\beta^{\prime}_{2}\hat{H}_\sigma(\alpha^{\prime}_{2};\mathcal{J}_{2}^{\prime}))]=0\ ,
+$$
+whenever the derivatives exist, i.e. with the possible
+exception of the zero measure set, by convexity.
+A simple computation yields
+\begin{multline*}
+  \frac{\partial^{2}}{\partial\alpha^{\prime}_{1}
+    \partial\alpha^{\prime}_{2}}
+  \mathbb{E}\ln\Omega[\exp(-\beta^{\prime}_1\hat{H}_\sigma(\alpha^{\prime}_{1};
+  \mathcal{J}_{1}^{\prime})
+  -\beta^{\prime}_2\hat{H}_\sigma(\alpha^{\prime}_{2};\mathcal{J}_{2}^{\prime}))]=0\\
+  =\mathbb{E}\ln\Omega^{\prime}[\exp(\beta^{\prime}_{1}J^{\prime}_{1}
+  \sigma_{i_{1}}\sigma_{j_{1}}+
+  \beta^{\prime}_{2}J^{\prime}_{2}\sigma_{i_{2}}\sigma_{j_{2}}]\\
+  -\mathbb{E}\ln\Omega^{\prime}[\exp(\beta^{\prime}_{1}J^{\prime}_{1}
+  \sigma_{i_{1}}\sigma_{j_{1}})]\Omega^{\prime}[\exp(\beta^{\prime}_{2}
+  J^{\prime}_{2}
+  \sigma_{i_{2}}\sigma_{j_{2}})]
+\end{multline*}
+Every time a derivative with respect to a pertubing parameter is taken, 
+the relative perturbation is added to the weights of the measure
+$\Omega$, which hence replaced by a perturbed measure
+denoted by $\Omega^{\prime}$.
+If the pertubation is small (like in our case, as
+explained in the previous lemma) it disappears from the measure
+in the thermodynamic limit. Recall that this holds with the usual limitation, i.e.
+only in integral average, because each derivative exists only almost everywhere,
+and meaningful equalities are hence proven only under integration over any given
+interval.
+Hence both in the equation above and
+in the next calculation $\beta_1^{\prime},\beta_2^{\prime}$ are
+not in the measure $\Omega^{\prime}$, and we get
+\begin{multline}\label{recap}
+  \frac{\partial^{2}}{\partial(\beta^{\prime}_{1}J_{1})
+    \partial(\beta^{\prime}_{2}J_{2})}
+  \mathbb{E}\ln\Omega^{\prime}[\exp(\beta^{\prime}_{1}J^{\prime}_{1}
+  \sigma_{i_{1}}\sigma_{j_{1}}+
+  \beta^{\prime}_{2}J^{\prime}_{2}\sigma_{i_{2}}\sigma_{j_{2}}]\\
+  =\mathbb{E}\Omega^{\prime\prime}(\sigma_{i_{1}}\sigma_{j_{1}})
+  -\mathbb{E}\Omega^{\prime\prime}
+  (\sigma_{i_{1}})\Omega^{\prime\prime}(\sigma_{j_{1}})=0\ ,
+\end{multline}
+again in integral average with respect to all the parameters
+$\alpha_{1}^{\prime},\alpha_{2}^{\prime},\beta_{1}^{\prime},\beta_{2}^{\prime}$.
+These new derivatives with respect to $\beta_{1}^{\prime},\beta_{2}^{\prime}$
+again introduce further perturbations in the weights, 
+which is why we used the notation $\Omega^{\prime\prime}$,
+but as usual in the thermodynamic limit they vanish (in integral average).
+The first line of (\ref{recap}) gives us the 
+generator of a family of relations that
+we will obtain by means of an expansion in powers
+of $\beta_1^{\prime},\beta_2^{\prime}$.
+The second line of the equation formulates the self-averaging
+(with respect to the Gibbs measure)
+implied by stochastic stability.
+
+So we proceed starting from the next lemma and the next theorem,
+summarizing what we just discussed. We want here to remind ourselves of the
+presence of the perturbations, vanishing only in the thermodynamic
+limit and only with probability one in the space of all parameters, 
+by denoting any perturbed
+Gibbs expectation with $\Omega^{\prime}$, independently
+of the perturbations.
+\begin{lemma}\label{prima} Let $\Omega^{\prime}$
+be the Gibbs measure including two independent perturbations
+of the form 
+$$
+\hat{H}_\sigma(\alpha^{\prime};\mathcal{J}^{\prime})=\sum_{\nu=1}^{P_{\alpha^{\prime}}}
+J^{\prime}_{\nu}\sigma_{i_{\nu}}\sigma_{j_{\nu}}
+$$
+with parameters $\alpha_1^{\prime},\alpha_2^{\prime}, 
+\beta_1^{\prime},\beta_2^{\prime}$ like in (\ref{twopert}).
+Then, recalling that $m$ is the magnetization, 
+the following self-averaging (with respect to the Gibbs measure)
+identity
+\begin{equation}\label{phi}
+  \mathbb{E}\{\Omega^{\prime}
+  (m^{2})
+  -[\Omega^{\prime}(m)]^{2}\}=0 
+\end{equation}
+holds in the thermodynamic limit in integral average with respect
+to the perturbing parameters
+$\alpha_1^{\prime},\alpha_2^{\prime},\beta_1^{\prime},\beta_2^{\prime}$.
+\end{lemma}
+We will see again that in the first line of equation (\ref{recap})
+the expression remains zero even without the derivative.
+In fact the generator of the identities we want to prove
+is expressed in the following 
+\begin{theorem}\label{thm-generatore} 
+In the thermodynamic limit the following identity holds
+\begin{eqnarray}\label{eq-generatore}
+&& \mathbb{E}\ln 
+\Omega^{\prime}(\exp(\beta_1^{\prime} 
+J^{\prime}_1\sigma_{i_1}\sigma_{j_1}
++\beta_2^{\prime} J^{\prime}_2\sigma_{i_2}\sigma_{j_2}))= \\
+\nonumber
+&&\mathbb{E}\ln 
+\Omega^{\prime}(\exp(\beta_1^{\prime}
+J_1^{\prime}\sigma_{i_1}\sigma_{j_1}))
++\mathbb{E}\ln 
+\Omega^{\prime}(\exp(\beta_2^{\prime}
+J_2^{\prime}\sigma_{i_2}\sigma_{j_2}))\ .
+\end{eqnarray}
+in integral average with respect to 
+$\alpha_1^{\prime},\alpha_2^{\prime}, \beta_1^{\prime},\beta_2^{\prime}$.
+\end{theorem}
+The relations we will derive are a simple consequence
+of this theorem, and fomalized in the next
+\begin{corollary} In the thermodynamic limit, 
+in integral average with respect to the perturbing parameters 
+$\alpha_1^{\prime},\alpha_2^{\prime},\beta_1^{\prime},\beta_2^{\prime}$, we have
+$$
+\sum_{a=0}^{\min\{r,s\}}(-)^{a+1}\frac{(2r+2s-a-1)!}{a!(2r-a)!(2s-a)!}
+\langle q^2_{2r}q^2_{2s}\rangle^{\prime}_a=0  
+\ \ \forall\ r,s \in \mathbb{N}\ ,
+$$
+where the subscript a in the global average
+$\langle\cdot\rangle^{\prime}_a=\mathbb{E}\Omega^{\prime}_{a}$ 
+means that precisely $a$ replicas are in common
+among those in $q_{2r}$ and those in $q_{2s}$.
+\end{corollary}
+{\bf Proof}. The following shorthand will be employed
+$$
+t_1=\tanh(\beta^{\prime}_1 J^{\prime}_1)\ ,\ 
+t_2=\tanh(\beta^{\prime}_2 J^{\prime}_2)\ ,
+$$
+$$
+\ \Omega_1=\Omega^{\prime}(\sigma_{i_1}
+\sigma_{j_1})\ ,\
+\Omega_2=\Omega^{\prime}(\sigma_{i_2}\sigma_{j_2})\ , \ 
+\Omega_{12}=\Omega^{\prime}(\sigma_{i_1}
+\sigma_{j_1}\sigma_{i_2}\sigma_{j_2})
+$$ 
+and
+$$
+W=\Omega^{\prime}(\exp
+(\beta_1^{\prime} J^{\prime}_1\sigma_{i_1}\sigma_{j_1}
++\beta_2^{\prime} J^{\prime}_2\sigma_{i_2}\sigma_{j_2}))\ .
+$$
+Observe that, if we let $\delta=1,2$,
+\begin{equation}
+\label{derivative}
+\frac{\partial}{\partial {\beta J^{\prime}_\delta}}
+=(1-t_{\delta}^2)\frac{\partial}{\partial {t_{\delta}}}\ .
+\end{equation}
+Now,
+$$
+\ln W =
+\ln(1+t_1\Omega_1+t_2\Omega_{2}+t_1t_2\Omega_{12})+
+\ln\cosh\beta J^{\prime}_1+\ln\cosh\beta J^{\prime}_2
+$$
+and
+\begin{multline*}
+\ln(1+t_1\Omega_1+t_2\Omega_{2}+t_1t_2\Omega_{12})=\\
+\sum_{n=1}^{\infty}\sum_{l=0}^{n}\sum_{m=0}^{l}\frac{(-)^{n+1}}{n}
+\binom{n}{l}\binom{l}{m}
+t_1^{n-l+m}t_2^{n-m}\Omega_{1}^{m}\Omega_2^{l-m}\Omega_{12}^{n-l}\\
+=\sum_{n,l,m}(-)^{n+1}\frac{(n-1)!}{(n-l)!(l-m)!m!}
+t_1^{n-l+m}t_2^{n-m}\Omega_{1}^{m}\Omega_2^{l-m}\Omega_{12}^{n-l}\ .
+\end{multline*}
+The derivatives in (\ref{recap}) kill the two terms with the
+hyperbolic cosines, and from (\ref{derivative}) we know that we can
+replace the derivatives with respect to $\beta J^{\prime}_\delta$ with
+the derivatives with respect to $t_\delta$, $\delta=1,2$.  Notice that
+the logarithm just expanded is zero for $t_{1}=0$ and for $t_{2}=0$,
+therefore as its derivative like in (\ref{recap}) is zero, the
+logarithm itself is zero. This is why Theorem \ref{thm-generatore}
+holds, being (\ref{eq-generatore}) just the integral of the second
+line in (\ref{recap}).
+
+Thanks to (\ref{q}), if we put
+$$
+n-l+m=r\ ,\ n-m = s\ ,\ n-l = a
+$$
+we get
+$$
+\sum_{r,s}\mathbb{E}[t_1^{r}t_2^{s}]\sum_{a=0}^{\min\{r,s\}}(-)^{a+1}
+\frac{(r+s-a-1)!}{a!(r-a)!(s-a)!}
+\langle q^{2}_{r}q^{2}_{s}\rangle^{\prime}_a=0 
+$$
+where, recall, $\langle\cdot\rangle_a$ means that $a$ replicas are in common
+among those in $q_{r}$ and those in $q_{s}$. 
+Hence the statement of the theorem to be proven
+$$
+\sum_{a=0}^{\min\{2r,2s\}}(-)^{a+1}\frac{(2r+2s-a-1)!}{a!(2r-a)!(2s-a)!}
+\langle q^{2}_{2r}q^{2}_{2s}\rangle^{\prime}_a=0\ ,
+$$
+where only the terms with an even number of replicas in each overlap
+survive because of the symmetry of the variables $J^{\prime}_{1},J^{\prime}_{2}$
+in $t_{1},t_{2}$. $\Box$
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Generalization to smooth functions of multi-overlaps}
+
+
+The fact  that in our formulas we  always got the square  power of the
+overlaps  is  due  to  the   fact  that  the  Hamiltonian  has  2-spin
+interactions.  Everything  we did so  far could then be  reproduced in
+the  case  of $p$-spin  interactions,  and  we  would obtain  the  same
+relations just derived, except the  overlaps would appear with the power
+$p$ instead of  2.  Clearly the perturbation needed in  this case is a
+$p$-spin  perturbation too.   More  in general,  we  could consider  a
+Hamiltonian consisting of the  sum (over $p$) of $p$-spin Hamiltonians
+for  any integer  $p$.  Then  we could  perturb each  of  the $p$-spin
+Hamiltonians with its proper  small $p$-spin perturbation, and add all
+these perturbations to  the system. Clearly we have  to make sure that
+all the terms in this whole Hamiltonian are weighted with sufficiently
+small weights so to  have the necessary convergence.  More explicitly,
+the   perturbed   Hamiltonian   is   
+$$
+H_{N}(\sigma,\alpha;\mathcal{J})=
+-\sum_{p}\bigg[a_{p}\sum_{\nu=1}^{P^{(p)}_{\alpha
+    N}}J_{\nu}\sigma_{i^{1}_{\nu}}\cdots\sigma_{i^{p}_{\nu}}+b_{p}
+\lambda_{p}\sum_{\nu=1}^{P^{\prime
+    (p)}_{\alpha^{\prime}}}J^{\prime}_{\nu}\sigma_{j^{1}_{\nu}}
+\cdots\sigma_{j^{p}_{\nu}}\bigg]\ ,          
+$$
+where
+$\sum_{p}|a_{p}|^{2}=\sum_{p}|b_{p}|^{2}=1$, the  notation for all the
+quenched  variables is the  usual one,  and $\{\lambda_{p}\}$  are the
+independent perturbing real parameters.
+
+It is not surprising then that we can state
+\begin{corollary}\label{corollary}
+The following constraints hold in integral average with respect to
+the set of all the perturbing parameters
+$$
+\sum_{a=0}^{\min\{2r,2s\}}(-)^{a+1}\frac{(2r+2s-a-1)!}{a!(2r-a)!(2s-a)!}
+\langle q^m_{2r}q^n_{2s}\rangle^{\prime}_a=0 
+\ \ \ \forall\ r,s,m,n \in \mathbb{N}\ 
+$$
+in the thermodynamic limit.
+\end{corollary}
+Again, this corollary can be seen as a consequence of 
+a self-averaging property, namely
+\begin{equation}
+\mathbb{E}\Omega^{\prime}(\sigma_{i^1_1}\cdots\sigma_{i^m_1}
+\sigma_{j^1_1}\cdots\sigma_{j^n_1})-
+\mathbb{E}[\Omega^{\prime}(\sigma_{i^1_1}\cdots\sigma_{i^m_1})
+\Omega^{\prime}(\sigma_{j^1_1}\cdots\sigma_{j^n_1})]=0\ .
+\end{equation}
+
+Therefore we can replace each overlap by any smooth function
+of the relative replicas in the statement of the corollaries.
+
+As a last remark, notice that in \cite{flt} the strategy consisted
+in using the fact the second derivative of the free energy 
+with respect to the ``perturbing inverse temperatures'' 
+($\beta^{\prime}_{1},\beta^{\prime}_{2}$ in our case) is bounded
+to deduce self-averaging, and from the latter the identities.
+Here we used the connectivity as opposed to the inverse temperature
+to analyze stochastic stability, we then showed that the latter implies
+the self-averaging of \cite{flt}.
+So we obtained a comparison between self-averaging and stochastic
+stability (of a quite general validity), both providing a 
+precious factorization of the Gibbs measure, and we also
+obtained that if any of the two is given, we know how to 
+derive the same constraints.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Self-averaging of the quenched-Gibbs measure}
+\label{energysection}
+
+Roughly speaking, if a convex random function does not
+fluctuate much, then its derivative does not fluctuate much
+either, with the exception of bad cases. This is well
+explained in Proposition 4.3 of \cite{t5} and
+Lemma 8.10 of \cite{bov2}. 
+We are not interested
+in general theorems here, in our case the convex function
+is the free energy density, and 
+we only need to know that it is self-averaging
+(in the sense that the random free energy density
+does not fluctuate around its quenched expectation,
+in the thermodynamic limit). In the case
+of finite connectivity random spin systems like the VB model, 
+a detailed proof
+of this can be found in \cite{gt1}. The derivative
+of the free energy density (times $-\beta)$ with respect to $-\beta$
+is, in full generality, the expectation of the 
+internal energy density $u_{N}=H_{N}/N$.
+Like in \cite{guerra2} and in 
+section 2 of \cite{gg}, 
+we have therefore this further self-averaging (in integral average with
+respect to $\beta$)
+$$
+\lim_{N\to\infty}[\langle u_{N}^{2}\rangle
+-\langle u_{N}\rangle^{2}]=0
+$$
+which implies (due to Schwartz inequality)
+\begin{equation}
+\label{auto}
+\lim_{N\to\infty}\langle u^{(1)}_{N}\phi_{s}\rangle
+=\lim_{N\to\infty}\langle u_{N}\rangle\langle\phi_{s}\rangle
+\end{equation}
+for any bounded function  $\phi_{s}$ of $s$ replicas, and
+$u^{(1)}_{N}$ is the internal energy density in the configuration space
+of the replica 1. More precisely,
+the spin-configuration space is $\{-1,1\}^{N}= \Sigma$, and we
+consider a bounded function $\phi_{s}$ of $s$ replicas, 
+i.e. $\phi_{s}:\Sigma^{s}\to \mathbb{R}$.
+The product space $\Sigma^{s}$ (``the space of the replicas'')
+is equipped with the product Gibbs measure (``replica measure'')
+$\Omega$, but the quenched variables 
+are the same in each factor of the product space, and this means
+that the measure $\langle\cdot\rangle=\mathbb{E}\Omega(\cdot)$
+on the product space $\Sigma^{s}$ is not a product measure.
+So $f^{(1)}_{N}$ is the free energy in the space which
+is the first factor in the product space $\Sigma^{s}$.
+Notice that $\Sigma$ has the cardinality of the continuum 
+in the thermodynamic limit $N\to\infty$.
+%Let us recall that apices denumerate replicas for the spins and the
+%Hamiltonian, while they are just regular exponents in the case of 
+%overlaps, where the replicas are counted or listed in the sub-index. 
+
+Now 
+we want to perturb the Hamiltonian 
+$$
+-\beta H_{N}(\sigma)\ \longrightarrow\ 
+-\beta H_{N}(\sigma)+\beta^{\prime}\sum_{\nu=1}^{P^{\prime}\alpha}
+J^{\prime}_{\nu}\sigma_{i^{\prime}_{\nu}}\sigma_{j^{\prime}_{\nu}} \ ,
+$$
+and consider
+the derivative with respect to the perturbing parameter,
+as we did in the previous section
+in order to obtain an expansion in powers of $\beta^{\prime}$
+with coefficients not depending on  $\beta^{\prime}$
+in the thermodynamic limit. As before, recall that we always need to 
+take derivatives (with respect to the inverse temperature this time),
+which by convexity exist only almost everywhere, and therefore 
+we will obtain equality only integrating back over a given interval \cite{talabook}.
+
+We are going to prove, first of all, the following
+\begin{theorem}\label{quattro} 
+For a given bounded function $\phi_{s}$ of $s$ replicas,
+the following relation, holding in integral average with respect to the 
+inverse temperature $\beta$, constrains the distribution
+of the 4-overlap
+  \begin{multline*}
+    \frac{s(s+1)(s+2)}{3!}
+    \langle q^{2}_{1,s+1,s+2,s+3}\phi_{s}\rangle
+    -\frac{s(s+1)}{2!}
+    \sum_{a}^{2,s}\langle q^{2}_{1,a,s+1,s+2}\phi_{s}\rangle\\
+    +s\sum_{a<b}^{2,s}\langle q^{2}_{1,a,b,s+1}\phi_{s}\rangle
+    -\sum_{a<b<c}^{2,s}
+    \langle q^{2}_{1,a,b,c}\phi_{s}\rangle
+    =\langle q^{2}_{1234}\rangle\langle \phi_{s} \rangle \ .
+  \end{multline*}
+\end{theorem}
+The proof is straightforward but long, and it will 
+be splitted into several steps.
+
+Let us consider the right hand side of (\ref{auto}). 
+Put $t=\tanh(\beta^{\prime})$, $q_0=1$,
+and let us just indicate the number
+of replicas in the overlaps, rather than denumerating them all.
+The presence of the perturbation implies that the pressure and
+the free energy are functions, $\tilde{p}_{N}(\beta,\beta^{\prime},\alpha)$
+and $\tilde{f}_{N}(\beta,\beta^{\prime},\alpha)$ respectively,
+of both $\beta$ and $\beta^{\prime}$,
+and recall also that according to our notations
+$\tilde{p}_{N}(\beta,\beta^{\prime},\alpha)=
+-\beta \tilde{f}_{N}(\beta,\beta^{\prime},\alpha)$.
+Let us prove the next
+\begin{lemma}\label{energy} The derivative
+of the (perturbed) pressure $\tilde{p}_N(\beta,\beta^{\prime},\alpha)$
+with respect to the perturbing parameter $\beta^{\prime}$
+has the following form as a series in powers of
+$t=\tanh(\beta^{\prime})$
+  \begin{equation}
+    \partial_{\beta^{\prime}}\tilde{p}_{N}(\beta,\beta^{\prime},\alpha)
+    =-\alpha\sum_{n=0}^{\infty}
+    t^{2n+1}(\langle q^{2}_{2n}\rangle-\langle q^{2}_{2n+2}\rangle)\ .
+  \end{equation}
+\end{lemma}
+{\bf Proof.} We have
+\begin{eqnarray*}
+  \partial_{\beta^{\prime}}\tilde{p}_{N}(\beta,\beta^{\prime},\alpha)
+  &=&-\sum_{m=1}^\infty
+  \pi_{\alpha}(m)\sum_{\nu=1}^m\langle 
+  J^{\prime}_\nu\sigma_{i^{\prime}_\nu}
+  \sigma_{j^{\prime}_{\nu}}\rangle_m\\
+  &=&-\sum_{m=1}^\infty
+  m\pi_{\alpha}(m)\langle J^{\prime}_m\sigma_{i^{\prime}_m}
+  \sigma_{j^{\prime}_{m}}\rangle_m\\
+  &=& -\alpha\sum_{m=1}^\infty
+  \pi_{\alpha}(m-1)\langle J^{\prime}_m\sigma_{i^{\prime}_m}
+  \sigma_{j^{\prime}_{m}}\rangle_m
+\end{eqnarray*}
+where the sub $m$ indicates that the variable $P^{\prime}_{\alpha}$
+has been fixed to $m$.
+It is easy to see that
+\begin{equation}\label{acca1}
+  \langle J^{\prime}_m\sigma_{i^{\prime}_m}
+  \sigma_{j^{\prime}_{m}}\rangle_m=
+  \mathbb{E}\frac{\Omega(J^{\prime}_m\sigma_{i^{\prime}_m}
+  \sigma_{j^{\prime}_{m}}
+    \exp(\beta J^{\prime}_m\sigma_{i^{\prime}_m}
+    \sigma_{j^{\prime}_{m}}))_{m-1}}{\Omega(
+    \exp(\beta J^{\prime}_m\sigma_{i^{\prime}_m}
+    \sigma_{j^{\prime}_{m}}))_{m-1}}\ .
+\end{equation}
+Hence
+\begin{equation}\label{acca2}
+  \partial_{\beta^{\prime}}\tilde{p}_{N}(\beta,\beta^{\prime},\alpha)
+  =-\alpha\mathbb{E}J^{\prime}
+  \frac{t+w}{1+tw}\ ,\ w\equiv
+  \Omega(\sigma_{i^{\prime}_m}\sigma_{j^{\prime}_{m}})\ ,
+\end{equation}
+according to the usual notations. Now a simple expansion
+(that we will explicitly write in the next lemma)
+of $(1+tw)^{-1}$ in powers of $t$ yields
+\begin{equation}\label{phioutside}
+ \partial_{\beta^{\prime}}\tilde{p}_{N}(\beta,\beta^{\prime},\alpha)
+  =-\alpha\sum_{n=0}^{\infty}
+  t^{2n+1}(\langle q^{2}_{2n}\rangle-\langle q^{2}_{2n+2}\rangle)\ .
+\end{equation}
+So the lemma is proven and we have an expression for
+the right hand side of (\ref{auto}), if we just
+multiply the average of the multi-overlaps by
+the average of $\phi_s$. $\Box$
+
+Let us now consider the left hand side of (\ref{auto}),
+recalling that $\phi_{s}$ is a function of $s$ replicas,
+that indices in the spins indicate which factor of the
+product space $\Sigma^{s}$ (which replica) the spin belongs to, 
+and that the energy density is assumed
+to be taken in the first replica.
+\begin{lemma}\label{espansione}
+Recalling that $w\equiv\Omega(\sigma_{i^{\prime}_m}
+\sigma_{j^{\prime}_m})$, we have
+  \begin{multline*}
+     \langle u^{(1)}_{N} \phi_{s} \rangle=
+    -\alpha t\mathbb{E}\{\Omega[\phi_{s}(1+J^{\prime}t^{-1}\sigma^{(1)}_{i_1}
+    \sigma^{(1)}_{j_1})\times \\
+    (1+J^{\prime}\sum_a^{2,s}\sigma^{(a)}_{i_1}\sigma^{(a)}_{j_1} t+
+    \sum_{a<b}^{2,s}\sigma_{i_1}^{(a)}\sigma_{i_1}^{(b)}
+    \sigma_{j_1}^{(a)}\sigma_{j_1}^{(b)}t^2+\\
+    J^{\prime}
+    \sum_{a<b<c}^{2,s}\sigma_{i_1}^{(a)}
+    \sigma_{i_1}^{(b)}\sigma_{i_1}^{(c)}\sigma_{j_1}^{(a)}
+    \sigma_{j_1}^{(b)}\sigma_{j_1}^{(c)}t^3
+    +\cdots)]\times \\
+    (1-J^{\prime}stw+\frac{s(s+1)}{2!}t^{2}w^{2}-
+    J^{\prime}\frac{s(s+1)(s+2)}{3!}t^3w^3\\
+    +\frac{s(s+1)(s+2)(s+3)}{4!}t^4w^4- \cdots)\}\ .
+  \end{multline*}
+\end{lemma} 
+{\bf Proof}. From the proof of the previous lemma, 
+in particular equations (\ref{acca1})-(\ref{acca2}), and
+by definition of replica measure, we immediately get
+\begin{equation}\label{phiinside}
+  \langle u^{(1)}\phi_{s} \rangle=
+  -\alpha\mathbb{E}
+  \frac{\Omega[ J^{\prime}\sigma^{(1)}_{i_1}\sigma^{(1)}_{j_1}
+    \exp(\beta J^{\prime}(\sigma^{(1)}_{i_1}\sigma^{(1)}_{j_1}
+    +\cdots+\sigma^{(s)}_{i_1}\sigma^{(s)}_{j_1}))\phi_{s}]}
+  {\Omega^s(\exp (\beta J^{\prime}\sigma_{i_1}\sigma_{j_1}))}\ ,
+\end{equation}
+that we rewrite as
+\begin{equation}
+  \langle u^{(1)}\phi_{s} \rangle=
+  -\alpha\mathbb{E}t
+  \frac{\Omega[(1+J^{\prime}t^{-1}\sigma^{(1)}_{i_1}\sigma^{(1)}_{j_1})\prod_{a=2}^s
+    (1+J^{\prime}t\sigma^{(a)}_{i_1}\sigma^{(a)}_{j_1})\phi_{s}]}
+  {(1+J^{\prime}tw)^s}\ .
+\end{equation}
+Let us write explicitly the power expansion of the denominator,
+that we omitted in the previous lemma
+\begin{multline*}
+  \frac{1}{(1+J^{\prime}tw)^s}=1-J^{\prime}stw+
+  \frac{s(s+1)}{2!}t^{2}w^{2}-\\
+  J^{\prime}\frac{s(s+1)(s+2)}{3!}t^3w^3
+  +\frac{s(s+1)(s+2)(s+3)}{4!}t^4w^4\cdots\ .
+\end{multline*}
+It is also clear that
+\begin{multline*}
+  \prod_{a=2}^s(1+J^{\prime}t\sigma^{(a)}_{i_1}\sigma^{(a)}_{j_1})
+  =1+J^{\prime}\sum_a^{2,s}\sigma^{(a)}_{i_1}\sigma^{(a)}_{j_1} t+
+  \sum_{a<b}^{2,s}\sigma_{i_1}^{(a)}\sigma_{i_1}^{(b)}
+  \sigma^{(a)}_{j_1}\sigma^{(b)}_{j_1}t^2\\
+  +J^{\prime}\sum_{a<b<c}^{2,s}\sigma_{i_1}^{(a)}
+  \sigma_{i_1}^{(b)}\sigma_{i_1}^{(c)}\sigma^{(a)}_{j_1}
+  \sigma^{(b)}_{j_1}\sigma^{(c)}_{j_1}t^3
+  +\cdots\ .
+\end{multline*}
+Gathering all the ingredients completes the proof of the lemma. $\Box$
+
+We are now able to compare the two sides of (\ref{auto}),
+and see what the self-averaging of the internal energy density
+in the thermodynamic limit brings.
+
+Equating the expressions computed in the 
+last two lemmas gives
+\begin{multline}\label{sviluppo}
+  \sum_{n=0}^{\infty}
+  t^{2n}(\langle q^{2}_{2n}\rangle
+  -\langle q^{2}_{2n+2}\rangle)\langle \phi_{s} \rangle
+  =\mathbb{E}\{\Omega[\phi_{s}(1+Jt^{-1}\sigma^{(1)}_{i_1}
+  \sigma^{(1)}_{j_1})\\
+  (1+J^{\prime}\sum_{a}^{2,s}\sigma^{(a)}_{i_1}\sigma^{(a)}_{j_1} t+
+  \sum_{a<b}^{2,s}\sigma_{i_1}^{(a)}\sigma_{i_1}^{(b)}
+  \sigma_{j_1}^{(a)}\sigma_{j_1}^{(b)}t^2+\\
+  J^{\prime}
+  \sum_{a<b<c}^{2,s}\sigma_{i_1}^{(a)}
+  \sigma_{i_1}^{(b)}\sigma_{i_1}^{(c)}\sigma_{i_1}^{(a)}\sigma_{i_1}^{(b)}
+  \sigma^{(c)}_{j_{1}}t^3+\\
+  \cdots+J^{\prime s-1}t^{s-1}\sigma_{i_1}^{(2)}\cdots\sigma_{i_1}^{(s)}
+  \sigma_{j_1}^{(2)}\cdots\sigma_{j_1}^{(s)})]\\
+  (1-J^{\prime}stw+\frac{s(s+1)}{2!}t^2w^2-
+  J^{\prime}\frac{s(s+1)(s+2)}{3!}t^3w^3\\
+  +\frac{s(s+1)(s+2)(s+3)}{4!}t^4w^4-\cdots)\}\ .
+\end{multline}
+The equality holds for any smooth function $\phi_{s}$
+(typical interesting information is obtained 
+for $\phi_{s}\equiv1$ or $\phi_{s=2n}=q^{2}_{2n}$), so that we get
+equalities between expressions
+involving averages of (squared) overlaps. 
+
+Let us see in detail what information we can get from the lowest orders.
+
+Denote by $\mathbb{E}(\cdot|\mathcal{A}_s)$ the conditional
+expectation with respect to the sigma-algebra $\mathcal{A}_s$
+generated by the overlaps of $s$ replicas. Let us show that the usual
+\cite{gg} Ghirlanda-Guerra identities for the overlap hold in our
+quite general case too:
+\begin{proposition} The Ghirlanda-Guerra relation holds 
+  \begin{equation}\label{ghigu}
+    \mathbb{E}(q^{2}_{a,s+1}|\mathcal{A}_s)=
+    \frac1s\langle q^{2}_{12}\rangle
+    +\frac1s\sum_{b\neq a} q^{2}_{a b}
+  \end{equation}
+in integral average with respect to the inverse temperature $\beta$.
+\end{proposition}
+{\bf Proof}. In the expansion (\ref{sviluppo}), where only the terms of 
+even order survive due to the symmetry of the variables $J$,
+at the lowest order in $t$ one gets 
+\begin{eqnarray*}
+  \langle\phi_{s}\rangle-
+  \langle q^{2}_{12}\rangle\langle\phi_{s}\rangle &=&
+  \langle\phi_{s}\rangle-s\mathbb{E}
+  [\omega(\sigma^{(1)}_{i_1}\sigma^{(1)}_{j_1})w\phi_{s}]
+  +\sum_{a}^{2,s}\mathbb{E}[\Omega(
+  \sigma^{(1)}_{i_1}\sigma^{(a)}_{i_1}\sigma^{(1)}_{j_1}\sigma^{(a)}_{j_1})\phi_{s}]\\
+  {} &=& \langle\phi_{s}\rangle 
+  -s\langle q^{2}_{1,s+1}\phi_{s}\rangle
+  +\sum_{a}^{2,s}\langle q^{2}_{1a}\phi_{s}\rangle\ ,
+\end{eqnarray*}
+which is precisely what is stated in (\ref{ghigu}),
+(see \cite{talabook}), immediately
+completing the proof of the proposition. $\Box$
+
+So the usual Ghirlanda-Guerra
+identities for 2-overlaps are recovered and proven to hold in 
+dilute spin glasses too.
+
+At the next order we get instead
+\begin{multline}\label{ordinedue}
+  \langle q^{2}_{12}\rangle\langle\phi_{s}\rangle- \langle
+  q^{2}_{1234}\rangle\langle\phi_{s}\rangle=
+  \sum_{a<b}^{2,s}\langle q^{2}_{a b}\phi_{s}\rangle+
+  \frac{s(s+1)}{2!}\langle q^{2}_{s+1,s+2}\phi_{s}\rangle\\
+  -s\sum_a^{2,s}\langle
+  q^{2}_{a,s+1}\phi_{s}\rangle-\frac{s(s+1)(s+2)}{3!}
+  \langle q^{2}_{1,s+1,s+2,s+3}\phi_{s}\rangle\\
+  +\frac{s(s+1)}{2!}\sum_a^{2,s}\langle
+  q^{2}_{1,a,s+1,s+2}\phi_{s}\rangle- s\sum_{a<b}^{2,s}\langle
+  q^{2}_{1,a,b,s+1}\phi_{s}\rangle\ +\sum_{a<b<c}^{2,s} \langle
+  q^{2}_{1,a,b,c}\phi_{s}\rangle\ .
+\end{multline}
+Now consider the four 2-overlaps terms. 
+A simple generalization of the usual Ghirlanda-Guerra relations
+\cite{gg}
+to the case when two replicas are added to a previously assigned
+set of other replicas, tells us that these terms cancel out.
+Let us check that explicitly.
+\begin{corollary} Relation (\ref{ghigu}) implies
+  \begin{equation}\label{ghigu2}
+    \mathbb{E}(q^{2}_{s+1,s+2}|\mathcal{A}_{s}) =
+    \frac{2}{s+1}\langle q^{2}_{12}\rangle +
+    \frac{2}{s(s+1)}\sum_{a<b}^{1,s}q^{2}_{ab}\ ,
+  \end{equation}
+under the same conditions, i.e. in integral average with respect to
+$\beta$.
+\end{corollary}
+{\bf Proof}.
+Let us re-write (\ref{ghigu}) in the case of $s+1$ given
+replicas
+$$
+\mathbb{E}(q^{2}_{s+1,s+2}|\mathcal{A}_{s+1})
+=\frac{1}{s+1}\langle q^{2}_{12}\rangle
++\frac{1}{s+1}\sum_{b}^{1,s} q^{2}_{b,s+1}\ .
+$$
+Now use 
+\begin{equation}\label{sigma}
+  \mathbb{E}(\mathbb{E}(\cdot|\mathcal{A}_{s+1})|\mathcal{A}_s)
+  =\mathbb{E}(\cdot|\mathcal{A}_s)
+\end{equation}
+to get
+\begin{eqnarray*}
+  \mathbb{E}(q^{2}_{s+1,s+2}|\mathcal{A}_{s}) & = & 
+  \frac{1}{s+1}\langle q^{2}_{12}\rangle
+  +\frac{1}{s+1}\sum_{b}^{1,s} \mathbb{E}(q^{2}_{b,s+1}|\mathcal{A}_s)\\
+  {} & = & \frac{1}{s+1}\langle q^{2}_{12}\rangle +
+  \frac{1}{s+1}\left(\langle q^{2}_{12}\rangle + 
+    \frac1s \sum_{b}^{1,s}\sum_{c\neq b}^{1,s}q^{2}_{bc}\right)\ .
+\end{eqnarray*}
+That is
+\begin{equation}
+  \mathbb{E}(q^{2}_{s+1,s+2}|\mathcal{A}_{s}) =
+  \frac{2}{s+1}\langle q^{2}_{12}\rangle +
+  \frac{2}{s(s+1)}\sum_{a<b}^{1,s}q^{2}_{ab}\ ,
+\end{equation}
+which is what we wanted to prove. $\Box$
+
+Now with (\ref{ghigu}) and (\ref{ghigu2}) in our hands, let us 
+take the three 2-overlap terms in the right hand side of (\ref{ordinedue})
+\begin{eqnarray*}
+  \frac{s(s+1)}{2}\langle q^{2}_{s+1,s+2}\phi_{s}\rangle & = &
+  s\langle q^{2}_{12}\rangle\langle\phi_{s}\rangle 
+  +\sum_{a<b}^{1,s}\langle q^{2}_{ab}\phi_{s}\rangle \\
+  -s\sum_{a}^{2,s}\langle q^{2}_{a,s+1}\phi_{s}\rangle & = & 
+  -s\sum_{a}^{1,s}\langle q^{2}_{a,s+1}\phi_{s}\rangle 
+  + s\langle q^{2}_{1,s+1}\phi_{s}\rangle \\
+  {} & = & -s\langle q^{2}_{12}\rangle\langle\phi_{s}\rangle
+  -\sum_{a}^{1,s}\sum_{b\neq a}^{1,s}\langle q^{2}_{ab}\phi_{s}\rangle 
+  +\langle q^{2}_{12}\rangle\langle\phi_{s}\rangle 
+  +\sum_{a}^{2,s}\langle q^{2}_{1a}\phi_{s}\rangle\\
+  \sum_{a<b}^{2,s}\langle q^{2}_{ab}\phi_{s}\rangle & = &
+  \sum_{a<b}^{1,s}\langle q^{2}_{ab}\phi_{s}\rangle-
+  \sum_{a}^{2,s}\langle q^{2}_{1a}\phi_{s}\rangle\ .
+\end{eqnarray*}
+The sum of these three terms cleary reduces to 
+$\langle q^{2}_{12}\rangle\langle\phi_{s}\rangle$, which is precisely
+what we find in the left hand side of (\ref{ordinedue}).
+The 2-overlap terms thus cancel out from (\ref{ordinedue}). 
+We are hence left with a new relation for 4-overlaps:
+\begin{multline*}
+  \frac{s(s+1)(s+2)}{3!}
+  \langle q^{2}_{1,s+1,s+2,s+3}\phi_{s}\rangle
+  -\frac{s(s+1)}{2!}
+  \sum_{a}^{2,s}\langle q^{2}_{1,a,s+1,s+2}\phi_{s}\rangle\\
+  +s\sum_{a<b}^{2,s}\langle q^{2}_{1,a,b,s+1}\phi_{s}\rangle
+  =\langle q^{2}_{1234}\rangle\langle \phi_{s} \rangle
+  +\sum_{a<b<c}^{2,s}
+  \langle q^{2}_{1,a,b,c}\phi_{s}\rangle\ ,
+\end{multline*}
+and the proof of Theorem \ref{quattro} is now complete. $\Box$
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+We report for sake of completeness the general
+expression of the generic order in the power series
+expansion (\ref{sviluppo}). From the explicit calculation
+in Lemma \ref{espansione} we get
+\begin{multline*}
+\langle q^{2}_{2n}\rangle\langle\phi_{s}\rangle
+-\langle q^{2}_{2n+2}\rangle\langle\phi_{s}\rangle=\\
+\sum_{m=2n-s+1}^{2n}\sum_{l=0}^{s-1}\sum_{a_1<\cdots<a_l}^{2,s}
+(-)^m\binom{s+m+1}{m}\times \\
+\mathbb{E}[w^m\Omega(\phi_{s}
+\sigma^{a_1}_{i_1}\cdots\sigma^{a_l}_{i_1}
+\sigma^{a_1}_{j_1}\cdots\sigma^{a_l}_{j_1})]\delta_{2n,m+l}\\
++\sum_{m=2n-s+2}^{2n+1}\sum_{l=0}^{s-1}\sum_{a_1<\cdots<a_l}^{2,s}
+(-)^m\binom{s+m+1}{m}\times \\
+\mathbb{E}[w^m\Omega(\phi_{s}\sigma^1_{i_1}\sigma^1_{j_1}
+\sigma^{a_1}_{i_1}\cdots\sigma^{a_l}_{i_1}
+\sigma^{a_1}_{j_1}\cdots\sigma^{a_l}_{j_1})]\delta_{2n,m+l-1}
+\end{multline*}
+which becomes, denoting by $x\land y$ the minumum between $x$ and $y$,
+\begin{multline}\label{recursive}
+\langle q^{2}_{2n}\rangle\langle\phi_{s}\rangle
+-\langle q^{2}_{2n+2}\rangle\langle\phi_{s}\rangle=
+\sum_{l=0}^{2n \land s-1}\sum_{a_1<\cdots<a_l}^{2,s}
+(-)^{2n-l}\binom{2n+s-l+1}{2n-l}\times \\
+[\langle \phi_{s}
+q^{2}_{a_1\cdots a_{l}}q^{2}_{s+1\cdots s+2n-l}\rangle
+-\frac{2n-l+s+2}{2n-l+1}
+\langle\phi_{s} q^{2}_{1a_1\cdots a_{l}}q^{2}_{s+1\cdots s+2n-l+1}
+\rangle]\  .
+\end{multline}
+In both the expressions above the term for $l=0$ is understood to be one.
+
+The right hand side of (\ref{recursive}), due to the presence of 
+$1+Jt^{-1}\sigma$ in the 
+right hand side of (\ref{sviluppo}) - along with the 
+symmetry of $J$, makes the expansion
+somewhat recursive. This means that at each order we find some terms
+already found in the previous order. More precisely, we claim
+without proving that at each $2n$-th order 
+of the expansion, all the terms involving $2m$-overlaps with $2m\leq 2n$
+cancel out thanks to a repeated use of (\ref{sigma}) with 
+the relations coming from the lower orders. Hence
+from the $2n$-th order we get new relations involving $2n+2$-overlaps
+only. This is what we explicitly verified only for 4-overlaps
+in the previous pages.
+More explicitly, if we re-write the difference in the right hand side  
+of (\ref{recursive}) as
+$$
+\langle q^{2}_{2n}\rangle\langle\phi_{s}\rangle
+-\langle q^{2}_{2n+2}\rangle\langle\phi_{s}\rangle=
+c_{2n}-d_{2n+2}\ ,
+$$
+we have
+$$
+\langle q^{2}_{2n}\rangle\langle\phi_{s}\rangle=c_{2n}\ ,\ 
+\langle q^{2}_{2n+2}\rangle\langle\phi_{s}\rangle=d_{2n+2}\ ,\
+c_{2n}=d_{2n}\ .
+$$
+So that the final formula becomes
+\begin{multline*}
+\langle q^{2}_{2n}\rangle\langle\phi_{s}\rangle=\\
+\sum_{l=0}^{2n \land s-1}\sum_{a_1<\cdots<a_l}^{2,s}
+(-)^{2n-l}\binom{2n+s-l+1}{2n-l}
+\langle q^{2}_{a_1\cdots a_{l}}q^{2}_{s+1\cdots s+2n-l}
+\phi_{s}\rangle \ ,
+\end{multline*}
+and holds in integral average, as always.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{generalization to smooth functions of 
+multi-overlaps}
+
+Just like for the family of identities discussed in the previous section,
+we started our analysis with the most natural quantity: the energy
+of our model with 2-spin interactions.
+And so we got again some relations for the squared multi-overlaps.
+But we already know how to generalize these formulas to 
+smooth functions of the overlaps. We can consider $p$-spin interactions,
+and the procedure would provide us with the same relations for the 
+$p$-th power of the overlaps. Then, as already explained, we can
+take a convergent sum over all integer $p$ of $p$-spin Hamiltonians,
+and consider the self-averaging of the desired one among them.
+The perturbed Hamiltonian is again
+$$
+H_{N}(\sigma , \alpha ; \mathcal{J})=-\sum_{p}\bigg[a_{p}
+\sum_{\nu=1}^{P^{(p)}_{\alpha N}}J_{\nu}\sigma_{i^{1}_{\nu}}
+\cdots\sigma_{i^{p}_{\nu}}
++b_{p}\lambda_{p}\sum_{\nu=1}^{P^{\prime (p)}_{\alpha^{\prime}}}
+J^{\prime}_{\nu}
+\sigma_{j^{1}_{\nu}}
+\cdots\sigma_{j^{p}_{\nu}}\bigg]\ ,
+$$
+where $\sum_{p}|a_{p}|^{2}=\sum_{p}|b_{p}|^{2}=1$, 
+the notation for all the quenched variables is the usual one,
+and $\{\lambda_{p}\}$ are the independent perturbing
+real parameters. As a side remark, we just point out that
+(like in \cite{gg}), in the case of this second family
+of identities it is not necessary to consider a 
+Hamiltonian consisting of the sum of all possible
+$p$-spin Hamiltonians: only the perturbation must be
+so.
+
+Let us remind once again that all the identities we provided hold in integral
+average with respect to all the variables used to compute derivatives.
+If more that one variables is used in some derivatives, the relations hold
+under integral performed simultaneously against all the variables, over
+the Cartesian product of the chosen intervals of variation of each variable.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{Concluding remarks}
+
+Notice that while we derived our identities having as reference 
+diluted spin glasses, all that matters in the derivation are the
+properties of the perturbing Hamiltonian, and they are therefore
+generically valid (in integral average with respect to the perturbing
+parameters).
+
+The Ghirlanda-Guerra identities for the overlap have been useful to
+prove non trivial properties of mean-field spin glasses. For instance
+Talagrand could prove \cite{talabook} that for all models 
+where the identities are
+valid, the overlap is positive with probability one.
+This positivity property is important as it enters in the
+Guerra free-energy bounds in spin systems without spin reversal
+symmetry, like in the case of odd-spin interactions.  
+Unfortunately the derivation
+of Talagrand for the overlap does not extend immediately to the
+multi-overlap case. We believe however that the self-averaging
+identity will be useful in the mathematical analysis of diluted spin
+models.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Acknowledgments}
+
+LDS thanks Fabio Lucio Toninelli and Anton Bovier for useful discussions.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thebibliography}{99}
+
+\bibitem{abds} A. Agostini, A. Barra, L. De Sanctis, {\em
+    Positive-Overlap Transition and Critical Exponents in Mean Field
+    Spin Glasses}, J. Stat. Mech. (2006) {\bf P11015}.
+
+\bibitem{ac} M. Aizenman, P. Contucci, {\em On the stability of the
+    quenched state in mean field spin glass models}, J. Stat. Phys.
+  {\bf 92}, 765 (1998).
+
+\bibitem{bds2} A. Barra, L. De Sanctis, {\em Stability properties and
+    probability distribution of multi-overlaps in dilute spin
+    glasses}, J. Stat. Mech. (2007) {\bf P08025}.
+
+\bibitem{bovierbook} A. Bovier, {\em Statistical Mechanics of
+    Disordered Systems, A mathematical perspective}, Cambridge
+  University Press (2006).
+
+\bibitem{bov2} A. Bovier, V. Gayrard, {\em Hopfield Models as
+    Generalized Random Mean Field Models}, Arxiv:cond-mat/9607103
+  (1997), in A. Bovier and P. Picco Eds., {\em Mathematical Aspects of
+    Spin Glasses and Neural Networks}, Progress in Probability {\bf
+    41} Birk\"auser, Boston-Basel-Berlin (1998).
+  
+\bibitem{lds1} L. De Sanctis, {\em Random Multi-Overlap Structures and
+    Cavity Fields in Diluted Spin Glasses}, J. Stat. Phys.
+  \textbf{117} 785-799 (2004)
+
+\bibitem{flt} S. Franz, M. Leone, F.L. Toninelli, {\em Replica bounds for 
+    diluted non-Poissonian spin systems}, J. Phys. A {\bf 36} 
+  10967 (2003).
+  
+\bibitem{gg} S. Ghirlanda, F. Guerra, {\em General properties of overlap 
+    distributions in disordered spin systems. Towards Parisi ultrametricity},
+  J. Phys. A, {\bf 31} 9149-9155 (1998).
+  
+\bibitem{guerra2} F. Guerra, {\em About the overlap distribution in
+    mean field spin glass models}, Int. Jou. Mod. Phys. B {\bf 10},
+  1675-1684 (1996).
+  
+\bibitem{gt1} F. Guerra, F.L. Toninelli, {\em The high temperature region
+    of the Viana-Bray diluted spin glass model}, 
+  J. Stat. Phys.Ê \textbf{115}  (2004).
+  
+\bibitem{mm1}  M. M\'ezard, A. Montanari, {\em Reconstruction 
+    on trees and spin glass transition}, ArXiv:cond-mat/0512295.
+
+\bibitem{mpv} M. M\'ezard, G. Parisi and M. A. Virasoro, {\em Spin
+    glass theory and beyond}, World Scientific, Singapore (1987).
+  
+\bibitem{mpz} M. M\'ezard, G. Parisi and R. Zecchina, {\em 
+    Analytic and Algorithmic Solution of Random Satisfiability
+    Problems}, Science {\bf 247} 812-815 (2002).
+  
+\bibitem{parisi} G. Parisi, {\em On the probabilistic formulation
+    of the replica approach to spin glasses}, ArXiv:cond-mat/9801081.
+  
+\bibitem{t5} M. Talagrand, {\em The Sherrington Kirkpatrick model: a
+    challenge for mathematicians}, Probab. Rel. Fields {\bf 110},
+  109-176 (1998).
+  
+\bibitem{talabook} M. Talagrand, {\em Spin glasses: a challenge for
+mathematicians. Cavity and Mean field models}, Springer Verlag
+(2003).
+
+\end{thebibliography}
+
+\end{document}     
+
+

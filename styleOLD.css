@@ -1,0 +1,131 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+	background: #fff;
+	color: #000;
+	font: 13px Arial, sans-serif;
+} 
+
+body {
+	width: 1024px;
+	text-align: center;
+	margin: 0 auto;
+	background: transparent url(imgs/bg_body.jpg) repeat-y 50%;
+}
+
+#header {
+	background: transparent url(imgs/bg_header.jpg) no-repeat 0 0;
+	height: 230px;
+}
+#header h1 {
+	display: none;
+}
+#menu {
+	width: 230px;
+	float: left;
+	font-size: 15px;
+}
+#menu ul li {
+	list-style: none;
+	margin: 15px;
+}
+#menu ul li a {
+	color: #000;
+	text-decoration: none;
+	display: block;
+}
+#menu ul li a:hover{
+	color: #00f;
+}
+#menu ul li#here {
+	color: #00f;
+	font-weight: bold;
+}
+#menu ul li.sub {
+	margin-top: -10px;
+	font-size: 12px;
+}
+#content {
+	width: 784px;
+	min-height: 160px;
+	float: left;
+	text-align: justify;
+	background: transparent url(imgs/bg_content.jpg) no-repeat 100% 0;
+	padding: 0 0 10px 0;
+}
+
+#content a {
+	color: #000;
+	text-decoration: none;
+	border-bottom: 1px dotted #f00;
+}
+#content a:hover {
+	border-bottom: 1px solid #00f;
+}
+#content div.home {
+	 background: transparent url(imgs/cg.jpg) no-repeat 580px 0;
+	 min-height: 217px;
+	 padding: 0 212px 0 0;
+	 font-size: 16px;
+}
+#content div.nav {
+	float: right;
+	margin: -1px 39px 10px 10px;
+	padding: 10px;
+	border: 1px solid #000;
+	width: 200px;
+}
+#content div.nav a {
+	display: block;
+	margin: 5px 0 5px 20px;
+}
+#content div.navTop {
+	text-align: right;
+	margin: 10px 50px 10px 10px;
+}
+#content dl {
+	margin: 10px 50px 10px 10px;
+}
+#content dl dt {
+	margin: 12px 0 3px 0;
+}
+#content dl dt span {
+	font-weight: bold;
+}
+#content dl dd {
+	margin: 3px 0 3px 18px;
+}
+#content dl dd span {
+	font-style: italic;
+}
+#content h2 {
+	color: #f00;
+	margin: 30px 50px 10px 10px;
+}
+#content h3 {
+	color: #f00;
+	margin: 10px  50px 0 10px;
+}
+#content ol {
+	margin: 10px 50px 10px 30px;
+}
+#content ol li {
+	margin: 5px 0;
+}
+#content p {
+	margin: 10px 50px 10px 10px;
+}
+#content ul {
+	margin: 10px 50px 10px 30px;
+}
+#content ul li {
+	margin: 5px 0;
+}
+
+#footer {
+	height: 60px;
+	background: transparent url(imgs/bg_footer.jpg) no-repeat 50% 0;
+	clear: both;
+}
